@@ -1,7 +1,11 @@
 # Default values for c#.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-replicaCount: 3
+serviceType: ClusterIP
+servicePort: 80
+containerPort: 80
+component: "croc-hunter"
+replicas: 3
 image:
   repository: acrjdtest.azurecr.io/jldeen/sentry-demo
   tag: master
@@ -10,10 +14,6 @@ image:
 imagePullSecrets: 
   name: sentrydemo
   email: ServicePrincipal@AzureRM
-serviceName: sentrydemo
-serviceType: ClusterIP
-servicePort: 80
-containerPort: 8080
 resources:
   limits:
     cpu: 1

@@ -3,13 +3,15 @@ kind: Service
 metadata:
   name: {{ template "fullname" . }}
   labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    app: {{ template "fullname" . }}
+    release: {{.Release.Name | quote }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 spec:
-  type: {{ .Values.serviceType }}
   ports:
-  - port: {{ .Values.servicePort }}
-    targetPort: {{ .Values.containerPort }}
-    protocol: TCP
-    name: {{ .Values.serviceName }}
+    - port: {{.Values.servicePort}}
+      targetPort: {{.Values.containerPort}}
+      protocol: TCP
+      name: http
   selector:
     app: {{ template "fullname" . }}
+  type: {{ default "ClusterIP" .Values.serviceType | quote }}
