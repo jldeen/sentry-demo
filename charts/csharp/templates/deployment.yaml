@@ -15,11 +15,15 @@ spec:
         draft: {{ default "draft-app" .Values.draft }}
         app: {{ template "fullname" . }}
     spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets.name }}
+      {{- end }}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-        - containerPort: {{ .Values.service.internalPort }}
+        - containerPort: {{ .Values.containerPort }}
         resources:
 {{ toYaml .Values.resources | indent 12 }}

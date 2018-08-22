@@ -11619,11 +11619,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jessicadeen/git/sentry/sentrydemo/sentrydemo.csproj",
+      "projectUniqueName": "/Users/jessicadeen/git/sentrydemo/sentrydemo.csproj",
       "projectName": "sentrydemo",
-      "projectPath": "/Users/jessicadeen/git/sentry/sentrydemo/sentrydemo.csproj",
+      "projectPath": "/Users/jessicadeen/git/sentrydemo/sentrydemo.csproj",
       "packagesPath": "/Users/jessicadeen/.nuget/packages/",
-      "outputPath": "/Users/jessicadeen/git/sentry/sentrydemo/obj/",
+      "outputPath": "/Users/jessicadeen/git/sentrydemo/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

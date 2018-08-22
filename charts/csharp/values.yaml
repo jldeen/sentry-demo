@@ -1,14 +1,19 @@
 # Default values for c#.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-replicaCount: 1
+replicaCount: 3
 image:
-  pullPolicy: IfNotPresent
-service:
-  name: dotnetcore
-  type: ClusterIP
-  externalPort: 8080
-  internalPort: 80
+  repository: acrjdtest.azurecr.io/jldeen/sentry-demo
+  tag: master
+  pullPolicy: Always
+## If you have a private registry you specify a secret to use
+imagePullSecrets: 
+  name: sentrydemo
+  email: ServicePrincipal@AzureRM
+serviceName: sentrydemo
+serviceType: ClusterIP
+servicePort: 80
+containerPort: 8080
 resources:
   limits:
     cpu: 1
@@ -17,4 +22,10 @@ resources:
     cpu: 250m
     memory: 256Mi
 ingress:
-  enabled: false
+  enabled: true
+  hostname: sentrydemo.k8s.az.jessicadeen.com
+  annotations:
+     kubernetes.io/ingress.class: nginx
+     certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+     kubernetes.io/tls-acme: "true"
+  tls: true
